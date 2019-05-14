@@ -1,0 +1,30 @@
+{
+  "name": "snack-pack-lambda",
+  "version": "1.1.0",
+  "description": "Backend for Snack Pack Teams bot that helps team members get connected and stay connected.",
+  "scripts": {
+    "build": "serverless package -p ../dist/lambda -r us-east-1",
+    "deploy": "yarn build && serverless deploy -p ../dist/lambda -r us-east-1 --conceal",
+    "test": "jest"
+  },
+  "author": "Samuel Schumacher <samschu@live.com>",
+  "license": "GPL-3.0",
+  "repository": "git@github.com:carbonsam/snack-pack-lambda.git",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-source-map-support": "^1.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "jest": "^21.2.1",
+    "serverless-offline": "^3.25.6",
+    "serverless-webpack": "^5.1.0",
+    "webpack": "^4.16.2",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "source-map-support": "^0.4.18"
+  }
+}

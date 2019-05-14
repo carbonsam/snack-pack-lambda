@@ -1,0 +1,9 @@
+# directories
+node_modules/
+config/
+dist/
+
+# files
+!config/*.example.json
+package-lock.json
+*.log
