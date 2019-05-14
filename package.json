@@ -1,13 +1,14 @@
 {
-  "name": "lambda-starter",
+  "name": "snack-pack-lambda",
   "version": "1.1.0",
-  "description": "A Node.js starter for the Serverless Framework with async/await and unit test support",
-  "main": "handler.js",
+  "description": "Backend for Snack Pack Teams bot that helps team members get connected and stay connected.",
   "scripts": {
+    "build": "serverless package -p ../dist/lambda -r us-east-1",
+    "deploy": "yarn build && serverless deploy -p ../dist/lambda -r us-east-1 --conceal",
     "test": "jest"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Samuel Schumacher <samschu@live.com>",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
