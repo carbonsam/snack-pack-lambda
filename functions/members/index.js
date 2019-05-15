@@ -8,20 +8,30 @@ export const createMember = async event => {
   const dbParams = {
     TableName: 'snack_pack_members',
     Item: {
-      memberId: 'TEST_MEMBER_ID', // unique member id
-      organizationId: 'TEST_ORGANIZATION_ID', // unique id for the member's current organization
+      memberId: eventBody.memberId, // unique member id
+      organizationId: eventBody.organizationId, // unique id for the member's current organization
       preferences: {
-        availableWeekDays: [0, 1, 2, 3, 4], // 0-4: Mon-Fri
-        availableLunchTimes: ['11-12', '11:30-12:30', '12-1'] // hour slots for lunches
-      }
+        availableWeekDays: eventBody.availableWeekDays || [], // Mon-Fri, e.g. '0'
+        availableLunchTimes: eventBody.availableLunchTimes || [] // hour slots for lunches, e.g. '11:00-12:00'
+      },
+      createdAt: Date.now(),
+      updatedAt: Date.now()
     }
   };
 
   try {
-    await dynamoDb.call('put', dbParams);
-    return responseSuccess(dbParams.Item);
+    if (dbParams.Item.memberId && dbParams.Item.organizationId) {
+      await dynamoDb.call('put', dbParams);
+      return responseSuccess(dbParams.Item);
+    } else {
+      console.log('Error - Missing Required Parameter');
+      return responseError({
+        status: false,
+        message: 'missing required parameter'
+      });
+    }
   } catch (error) {
     console.log(error);
-    return responseError({ status: false });
+    return responseError({ status: false, message: '' });
   }
 };
