@@ -1,6 +1,6 @@
 {
   "name": "snack-pack-lambda",
-  "version": "1.1.0",
+  "version": "0.1.0",
   "description": "Backend for Snack Pack Teams bot that helps team members get connected and stay connected.",
   "scripts": {
     "build": "serverless package -p ../dist/lambda -r us-east-1",
@@ -17,14 +17,24 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
+    "husky": "^2.3.0",
     "jest": "^21.2.1",
+    "prettier": "^1.17.1",
+    "pretty-quick": "^1.10.0",
     "serverless-offline": "^3.25.6",
     "serverless-webpack": "^5.1.0",
     "webpack": "^4.16.2",
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.455.0",
     "babel-runtime": "^6.26.0",
-    "source-map-support": "^0.4.18"
+    "source-map-support": "^0.4.18",
+    "uuid": "^3.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
