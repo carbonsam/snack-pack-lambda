@@ -30,8 +30,14 @@ provider:
       Resource: 'arn:aws:dynamodb:us-east-1:567027674316:table/snack_pack_*'
 
 functions:
+  member-get:
+    handler: functions/members/get.main
+    events:
+      - http:
+          path: api/members/{organizationId}/{memberId}
+          method: get
   member-create:
-    handler: functions/members/index.createMember
+    handler: functions/members/create.main
     events:
       - http:
           path: api/members
