@@ -2,8 +2,9 @@ import * as dynamoDb from '../../utilities/dynamodb';
 import { responseSuccess, responseError } from '../../utilities/responses';
 
 export const main = async event => {
-  const organizationId = event.pathParameters.organizationId;
-  const memberId = event.pathParameters.memberId;
+  const eventBody = JSON.parse(event.body);
+  const organizationId = eventBody.organizationId;
+  const memberId = eventBody.memberId;
   const params = {
     TableName: 'snack_pack_members',
     Key: {
