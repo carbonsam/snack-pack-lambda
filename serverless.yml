@@ -34,10 +34,16 @@ functions:
     handler: functions/members/get.main
     events:
       - http:
-          path: api/members/{organizationId}/{memberId}
+          path: api/members
           method: get
   member-create:
     handler: functions/members/create.main
+    events:
+      - http:
+          path: api/members
+          method: put
+  member-update:
+    handler: functions/members/update.main
     events:
       - http:
           path: api/members
