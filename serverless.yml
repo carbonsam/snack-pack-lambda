@@ -42,3 +42,9 @@ functions:
       - http:
           path: api/members
           method: post
+  member-update:
+    handler: functions/members/update.main
+    events:
+      - http:
+          path: api/members/update
+          method: post
